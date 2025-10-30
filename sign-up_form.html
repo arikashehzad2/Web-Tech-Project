@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - Scoopy Doo</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Baloo 2", cursive;
+        background-color: #fcefee;
+        background-image: url("images/icecream-bg.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .signup-form {
+        width: 100%;
+        max-width: 600px;
+        background-color: rgba(246, 218, 238, 0.85);
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 0 25px rgba(98, 17, 61, 0.1);
+      }
+
+      .signup-form h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #58425e;
+        font-weight: bold;
+      }
+
+      .form-label {
+        font-weight: 600;
+        color: #6b4f77;
+      }
+
+      .form-control {
+        border-radius: 15px;
+        background-color: #fff0f5;
+      }
+
+      .form-check-label {
+        margin-left: 5px;
+        color: #6b4f77;
+      }
+
+      .btn-primary {
+        background-color: #ff9aa2;
+        border-color: #ff9aa2;
+        font-weight: 600;
+        border-radius: 15px;
+      }
+
+      .btn-primary:hover {
+        background-color: #ff6f91;
+        border-color: #ff6f91;
+      }
+
+      .error {
+        color: red;
+        font-size: 0.9em;
+        margin-top: 5px;
+      }
+
+      @media (max-width: 768px) {
+        .signup-form {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="signup-form">
+      <h2>Create Your Account</h2>
+      <form id="signupForm" novalidate>
+        <div class="mb-3">
+          <label for="fullname" class="form-label">Full Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="fullname"
+            placeholder="Enter your full name"
+          />
+          <div class="error" id="fullnameError"></div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email Address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter your email"
+          />
+          <div class="error" id="emailError"></div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Enter your password"
+          />
+          <div class="error" id="passwordError"></div>
+        </div>
+
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label"
+            >Confirm Password</label
+          >
+          <input
+            type="password"
+            class="form-control"
+            id="confirmPassword"
+            placeholder="Confirm your password"
+          />
+          <div class="error" id="confirmPasswordError"></div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label d-block">Gender</label>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              id="male"
+              value="male"
+            />
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              id="female"
+              value="female"
+            />
+            <label class="form-check-label" for="female">Female</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              id="other"
+              value="other"
+            />
+            <label class="form-check-label" for="other">Other</label>
+          </div>
+          <div class="error" id="genderError"></div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label d-block">Interests</label>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="icecream"
+              value="Ice Cream"
+            />
+            <label class="form-check-label" for="icecream">Ice Cream</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="cakes"
+              value="Cakes"
+            />
+            <label class="form-check-label" for="cakes">Cakes</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="desserts"
+              value="Desserts"
+            />
+            <label class="form-check-label" for="desserts">Desserts</label>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="country" class="form-label">Country</label>
+          <select class="form-select" id="country">
+            <option value="" selected disabled>Select your country</option>
+            <option value="pakistan">Pakistan</option>
+            <option value="usa">USA</option>
+            <option value="uk">UK</option>
+            <option value="canada">Canada</option>
+            <option value="other">Other</option>
+          </select>
+          <div class="error" id="countryError"></div>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="terms" />
+          <label class="form-check-label" for="terms"
+            >I agree to the Terms and Conditions</label
+          >
+          <div class="error" id="termsError"></div>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("signupForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Clear previous errors
+          document
+            .querySelectorAll(".error")
+            .forEach((el) => (el.textContent = ""));
+
+          let valid = true;
+
+          const fullname = document.getElementById("fullname").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const password = document.getElementById("password").value;
+          const confirmPassword =
+            document.getElementById("confirmPassword").value;
+          const gender = document.querySelector('input[name="gender"]:checked');
+          const country = document.getElementById("country").value;
+          const terms = document.getElementById("terms").checked;
+
+          if (fullname === "") {
+            document.getElementById("fullnameError").textContent =
+              "Full name is required";
+            valid = false;
+          }
+
+          if (email === "") {
+            document.getElementById("emailError").textContent =
+              "Email is required";
+            valid = false;
+          } else {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+              document.getElementById("emailError").textContent =
+                "Invalid email format";
+              valid = false;
+            }
+          }
+
+          if (password === "") {
+            document.getElementById("passwordError").textContent =
+              "Password is required";
+            valid = false;
+          }
+
+          if (confirmPassword === "") {
+            document.getElementById("confirmPasswordError").textContent =
+              "Please confirm your password";
+            valid = false;
+          } else if (password !== confirmPassword) {
+            document.getElementById("confirmPasswordError").textContent =
+              "Passwords do not match";
+            valid = false;
+          }
+
+          if (!gender) {
+            document.getElementById("genderError").textContent =
+              "Please select your gender";
+            valid = false;
+          }
+
+          if (country === "") {
+            document.getElementById("countryError").textContent =
+              "Please select your country";
+            valid = false;
+          }
+
+          if (!terms) {
+            document.getElementById("termsError").textContent =
+              "You must agree to the Terms and Conditions";
+            valid = false;
+          }
+
+          if (valid) {
+            alert("Form submitted successfully!");
+            this.reset();
+          }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

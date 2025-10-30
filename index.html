@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Assignment 2 — Single Page CRUD (jQuery + REST API)</title>
+    <title>Assignment 2 — Single Page CRUD</title>
 
     <!-- Bootstrap 5 CSS -->
     <link
@@ -15,7 +15,6 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <style>
-      /* small spacing tweaks */
       .spinner-container {
         display: none;
       }
@@ -35,9 +34,8 @@
   </head>
   <body>
     <div class="container my-4">
-      <h2 class="mb-3">Single Page CRUD — Stories (jQuery + REST API)</h2>
+      <h2 class="mb-3">Single Page CRUD — Stories</h2>
 
-      <!-- Controls -->
       <div class="d-flex gap-2 mb-3">
         <button id="refreshBtn" class="btn btn-primary">Refresh Stories</button>
         <div class="spinner-container align-self-center" id="spinnerWrap">
@@ -51,7 +49,6 @@
       </div>
 
       <div class="row">
-        <!-- Form (Create / Edit) -->
         <div class="col-md-4 mb-4">
           <div class="card">
             <div class="card-header" id="formHeader">Create New Story</div>
@@ -89,7 +86,6 @@
           </div>
         </div>
 
-        <!-- Table (Read) -->
         <div class="col-md-8">
           <div class="card">
             <div class="card-header">Stories</div>
@@ -104,23 +100,15 @@
                       <th style="width: 18%">Actions</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <!-- rows dynamically injected here -->
-                  </tbody>
+                  <tbody></tbody>
                 </table>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- row -->
     </div>
-    <!-- container -->
-
-    <!-- Toasts -->
     <div class="toast-container" id="toastContainer"></div>
-
-    <!-- Bootstrap 5 JS (popper + bootstrap) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
@@ -135,7 +123,6 @@
         const $formHeader = $("#formHeader");
         const $cancelEditBtn = $("#cancelEditBtn");
 
-        // show toast helper
         function showToast(message, isSuccess = true) {
           const id = "t" + Date.now();
           const toastHTML = `
@@ -151,20 +138,17 @@
           const toastEl = document.getElementById(id);
           const bsToast = new bootstrap.Toast(toastEl, { delay: 3000 });
           bsToast.show();
-          // remove from DOM after hidden
+
           toastEl.addEventListener("hidden.bs.toast", () =>
             $(toastEl).remove()
           );
         }
 
-        // show/hide spinner
         function showSpinner(show) {
           $spinner.toggle(show);
         }
 
-        // render a single story row (returns jQuery row element)
         function createRow(item) {
-          // item expected fields: id, title, content
           const $row = $(`
           <tr data-id="${item.id}">
             <td>${item.id}</td>
@@ -181,13 +165,11 @@
           return $row;
         }
 
-        // fetch & render all stories (Read)
         function fetchStories() {
           showSpinner(true);
           $tableBody.empty();
           $.get(baseURL)
             .done(function (data) {
-              // data should be an array
               if (!Array.isArray(data)) data = [];
               data.forEach((item) => {
                 $tableBody.append(createRow(item));
@@ -206,9 +188,7 @@
             });
         }
 
-        // attach edit/delete handlers to rows
         function attachRowHandlers() {
-          // Edit
           $tableBody
             .find(".edit-btn")
             .off("click")
@@ -217,7 +197,6 @@
               startEdit(id);
             });
 
-          // Delete
           $tableBody
             .find(".delete-btn")
             .off("click")
@@ -227,12 +206,10 @@
             });
         }
 
-        // Create new story (POST)
         function createStory(data) {
           showSpinner(true);
           $.post(baseURL, data)
             .done(function (created) {
-              // append new story to table
               $tableBody.prepend(createRow(created));
               attachRowHandlers();
               $form[0].reset();
