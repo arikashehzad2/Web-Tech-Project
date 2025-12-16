@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Scoopy Doo</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Times New Roman', Times, Georgia, serif;
+   width: 100%; min-height: 100vh; }
+
+  /* Header */
+  header {
+    background-color: #f4f3f4;
+    padding: 20px;
+    position: relative;
+  }
+
+  .logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    margin-left: 20%; /* adjust as needed */
+    margin-top: 1%;
+    width: 100px;
+    height: 100px;
+  }
+
+  .hero {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .hero h1 {
+    font-size: 80px;
+    color: #130013;
+    margin-bottom: 20px;
+  }
+
+  hr {
+    border: 1px solid #100;
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .hero p {
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    font-size: 20px;
+    color: #2d0101;
+    max-width: 800px;
+    margin: 10px auto 20px auto;
+    /* font-weight: bold; */
+  }
+
+  .cta-button {
+    display: inline-block;
+    background-color: #ff6699;
+    color: white;
+    padding: 19px 28px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 30px;
+  }
+  .cta-button:hover { transform: scale(1.05); }
+
+  /* Hamburger Menu - Professional */
+  .menu-button {
+    display: inline-block;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 40px;
+    height: 35px;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .menu-button div {
+    height: 4px;
+    background-color: #ff6699;
+    border-radius: 2px;
+    margin: 6px 0;
+    transition: all 0.4s ease;
+  }
+
+  #menu-toggle { display: none; }
+
+  .main-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #e4eef4;
+    box-shadow: -2px 0 12px rgba(0,0,0,0.15);
+    border-radius: 0 0 0 10px;
+    padding-top: 80px;
+    padding-left: 20px;
+    z-index: 1000;
+    transition: transform 0.4s ease;
+    transform: translateX(100%);
+  }
+
+  #menu-toggle:checked + .menu-button + .main-nav {
+    display: block;
+    transform: translateX(0);
+  }
+
+  .main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .main-nav ul li {
+    margin: 25px 0;
+  }
+
+  .main-nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    font-weight: bold;
+    font-size: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .main-nav ul li a:hover {
+    color: #ff6699;
+    transform: scale(1.05);
+  }
+
+  /* Features Section */
+  #features {
+    width: 100%;
+  }
+  .feature-top {
+    width: 100%;
+    display: block;
+  }
+  .feature-row {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+    gap: 0; /* no gap, images should span full width */
+  }
+  .feature-row img {
+    width: 33.3333%;
+    height: auto;
+    display: block;
+  }
+
+  /* About Section */
+  #about { padding: 40px 20px; }
+  #about h2 { margin-bottom: 15px;
+              font-family: 'Times New Roman', Times, Georgia, serif;
+            font-size: xx-large; }
+  #about p { margin-bottom: 15px;
+  font-size: x-large; }
+
+  /* Shop Section */
+  #shop { text-align: center; padding: 40px 20px; }
+  .shop { width: 400px; height: auto; border-radius: 5%; }
+
+  /* Offers Section */
+  #offers { text-align: center; padding: 40px 20px; }
+  #offers h3 { margin-bottom: 20px;
+               font-size: xx-large; }
+  .doodle1 { max-width: 100%; height: auto; }
+
+  /* Footer */
+  footer { background: #f4f3f4; padding: 20px; text-align: center; }
+  .footer-icons i {
+    font-size: 40px;
+    margin: 0 15px;
+    cursor: pointer;
+    color: #62605e;
+    transition: transform 0.3s ease;
+  }
+  .footer-icons i:hover { transform: scale(1.2); }
+  footer .copyright { color: #919090; margin-top: 10px; }
+
+  /* Media Queries */
+  @media (max-width: 1024px) {
+    .hero h1 { font-size: 60px; }
+    .hero p { font-size: 18px; }
+    .feature-row img { width: 33.3333%; }
+    .shop { width: 70%; }
+  }
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 50px; }
+    .logo { width: 80px; height: 80px; }
+  }
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 40px; }
+    .hero p { font-size: 16px; }
+    .feature-row { flex-direction: column; }
+    .feature-row img { width: 100%; }
+    .shop { width: 90%; margin: 0 auto; }
+    .logo { width: 70px; height: 70px; }
+  }
+</style>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+</head>
+<body>
+<header>
+  <!-- Hamburger Menu -->
+  <input type="checkbox" id="menu-toggle" />
+  <label for="menu-toggle" class="menu-button">
+    <div></div>
+    <div></div>
+    <div></div>
+  </label>
+
+ <div class="main-nav">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <!-- <li><a href="upcoming.html">Upcoming Products</a></li> -->
+    <li><a href="about.html">About Us</a></li>
+  </ul>
+</div>
+
+
+  <!-- Logo -->
+  <img src="images/logo.png" alt="icecream-logo" class="logo" />
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>SCOOPY DOO</h1>
+    <hr />
+    <p>Welcome to our Ice Cream Parlour, where every scoop is crafted with love and the finest ingredients. From classic flavors to exciting new creations, we bring you creamy goodness in every bite.</p>
+    <a href="menu.html" class="cta-button">Explore Flavors</a>
+
+  </div>
+</header>
+
+
+<main>
+  <section id="features">
+    <!-- Top full-width image -->
+    <img src="images/icecream-1.png" alt="icecream-big" class="feature-top" />
+
+    <!-- Bottom three images in a single horizontal row -->
+    <div class="feature-row">
+      <img src="images/icecream-2.jpg" alt="icecream-cup2" />
+      <img src="images/icecream-3.jpg" alt="icecream-cone" />
+      <img src="images/icecream-4.jpg" alt="cone-sprinkles" />
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Scoopy Doo</h2>
+    <p>
+      At Scoopy Doo, we believe every scoop tells a story. Since opening our doors, we’ve been serving happiness in the form of creamy, handcrafted ice cream made with the freshest ingredients. From timeless classics like chocolate and vanilla to adventurous flavors you won’t find anywhere else, our menu is crafted to surprise your taste buds.
+    </p>
+    <p>
+      We’re more than just an ice cream parlour – we’re a place for friends to meet, families to celebrate, and kids to smile a little brighter. Every cone, cup, and sundae is made with love, because at Scoopy Doo, we know that ice cream isn’t just dessert-it’s joy in its sweetest form.
+    </p>
+  </section>
+
+ <section id="shop">
+  <img src="images/shop.png" alt="shop" class="shop" />
+  <p class="contact-button">
+    <a href="#" class="cta-button" onclick="toggleContact()">Find Us / Contact</a>
+  </p>
+  <!-- Hidden contact details -->
+  <div id="contact-details" style="display: none; margin-top: 20px; font-size: 18px; color: #130013;">
+    <p>📞 Phone: +92 300 1234567</p>
+    <p>🏠 Address: Wapda Town Phase 2, Pakistan</p>
+  </div>
+</section>
+
+<script>
+  function toggleContact() {
+    const details = document.getElementById('contact-details');
+    if (details.style.display === 'none') {
+      details.style.display = 'block';
+    } else {
+      details.style.display = 'none';
+    }
+  }
+</script>
+
+
+
+  <section id="offers">
+    <h3>WHAT'S NEW THIS SEASON</h3>
+    <img src="images/ic-doodle1.png" alt="seasonal offers doodle" class="doodle1" />
+  </section>
+</main>
+
+<footer>
+  <div class="footer-icons">
+    <i class="fab fa-facebook"></i>
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-twitter"></i>
+    <i class="fab fa-linkedin"></i>
+    <i class="fab fa-pinterest"></i>
+    <i class="fab fa-google"></i>
+  </div>
+  <p class="copyright">
+    © 2025 Sweet Scoops Ice Cream | All Rights Reserved | Designed with ❤️ by Arika
+  </p>
+</footer>
+
+</body>
+</html>
