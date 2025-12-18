@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+      }
+      header {
+        position: relative;
+        text-align: center;
+        padding: 40px 20px;
+        background-color: rgb(244, 243, 244);
+      }
+      .logo {
+        position: absolute;
+        top: 15%;
+        left: 150px;
+        width: 100px;
+        height: 100px;
+      }
+      .menu-button {
+        position: absolute;
+        top: 35%;
+        left: 40px;
+        width: 50px;
+        cursor: pointer;
+      }
+      .menu-button div {
+        height: 2px;
+        background-color: rgb(18, 9, 0);
+        margin: 6px 0;
+        margin-left: 15px;
+        border-radius: 2px;
+        height: 4px;
+        transition: all 0.3s ease;
+      }
+      #menu-toggle {
+        display: none;
+      }
+      .main-nav {
+        display: none;
+        position: absolute;
+        top: 200px;
+        left: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(232, 97, 194, 0.2);
+        padding: 40px;
+      }
+      .main-nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+      }
+      .main-nav ul li {
+        margin: 10px 0;
+      }
+      .main-nav ul li a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+      }
+      #menu-toggle:checked + .menu-button + .main-nav {
+        display: block;
+      }
+
+      .hero h1 {
+        text-align: center;
+        color: rgb(19, 0, 19);
+        font-size: 60px;
+      }
+      hr {
+        width: 100%;
+        border: 1px solid rgb(16, 0, 0);
+        margin-top: 30px;
+      }
+
+      .hero p {
+        text-align: center;
+        font-size: 20px;
+        margin-left: 50px;
+        margin-right: 50px;
+        color: rgb(45, 1, 1);
+        font: bolder;
+      }
+      .cta-button {
+        display: inline-block;
+        background-color: rgb(255, 102, 153);
+        color: white;
+        padding: 12px 28px;
+        border-radius: 30px;
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: none;
+        margin-top: 15px;
+        transition: all 0.3s ease;
+      }
+      .cta-button:hover {
+        background-color: rgb(255, 102, 153);
+        transform: scale(1.05);
+      }
+      .contact-button {
+        text-align: center;
+      }
+      .contact-button .cta-button {
+        background-color: rgb(255, 64, 128);
+      }
+      .contact-button .cta-button:hover {
+        background-color: rgb(255, 64, 128);
+        transform: scale(1.05);
+      }
+
+      .cups {
+        width: 925px;
+        height: 450px;
+        margin: 40px auto;
+        display: block;
+        border-radius: 4%;
+      }
+
+      .img2,
+      .cone,
+      .sprinkle {
+        width: 280px;
+        height: 250px;
+        margin: 30px 20px;
+        border-radius: 10%;
+      }
+
+      h2 {
+        text-align: left;
+        margin-left: 2%;
+        cursor: pointer;
+      }
+      p {
+        text-align: left;
+        margin-left: 2%;
+      }
+
+      .shop {
+        width: 400px;
+        height: 400px;
+        margin: 30px auto;
+        display: block;
+        border-radius: 5%;
+      }
+      h3 {
+        text-align: center;
+        font-size: xx-large;
+      }
+      .doodle1 {
+        display: block;
+        margin: 0 auto;
+      }
+      .footer-icons {
+        text-align: center;
+      }
+      .footer-icons i {
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        font-size: 40px;
+        margin: 0 15px;
+        color: rgb(98, 94, 94);
+      }
+      .footer-icons i:hover {
+        transform: scale(1.2);
+      }
+      footer .copyright {
+        color: rgb(145, 144, 144);
+        text-align: center;
+      }
+
+      /* CV Section */
+      #cv {
+        width: 80%;
+        margin: 50px auto;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px 30px;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Hide original hover */
+      #cv h2:hover {
+        color: rgb(255, 102, 153);
+      }
+
+      /* Hide checkboxes */
+      .cv-section input[type="checkbox"] {
+        display: none;
+      }
+
+      /* Hide details by default */
+      .cv-details {
+        display: none;
+        padding: 10px 0 20px 0;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #555;
+        transition: all 0.3s ease;
+      }
+
+      /* Show details when checkbox checked */
+      .cv-section input[type="checkbox"]:checked + label + .cv-details {
+        display: block;
+      }
+
+      .cv-header {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .cv-header h1 {
+        color: rgb(19, 0, 19);
+        font-size: 50px;
+        margin-bottom: 10px;
+      }
+      .cv-header hr {
+        width: 60%;
+        border: 1px solid rgb(16, 0, 0);
+        margin: 0 auto;
+      }
+
+      @media (max-width: 600px) {
+        .logo {
+          top: 20px;
+          left: 20px;
+          width: 70px;
+          height: 70px;
+        }
+        .hero h1 {
+          font-size: 45px;
+        }
+        .cta-button {
+          padding: 10px 24px;
+          font-size: 16px;
+        }
+        .cups {
+          width: 90%;
+          height: 450px;
+          margin-left: 50px;
+          border-radius: 4%;
+        }
+        h2 {
+          margin-left: 41px;
+        }
+        p {
+          text-align: left;
+        }
+        #cv {
+          width: 95%;
+          margin: 20px auto;
+          padding: 15px 20px;
+        }
+      }
+    </style>
+  </head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  />
+
+  <body>
+    <header>
+      <input type="checkbox" id="menu-toggle" />
+      <label for="menu-toggle" class="menu-button">
+        <div></div>
+        <div></div>
+        <div></div>
+      </label>
+
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#cups">Ice Cream Cups</a></li>
+          <li><a href="#sundae">Sundae</a></li>
+          <li><a href="#shakes">Ice Cream Shakes</a></li>
+          <li><a href="#slush">Slush</a></li>
+          <li><a href="#waffles">Waffles</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <img src="images/logo.png" alt="icecream-logo" class="logo" />
+      <div class="hero">
+        <h1>MID-TERM LAB</h1>
+        <hr />
+        <p>
+          You are required to create a Personal CV Page as part of your existing
+          Web Technologies Term Project. The CV must be integrated within your
+          project’s main layout page (e.g., using your existing header, footer,
+          and styling).
+        </p>
+        <div class="cv-header">
+          <h1>Arika Shehzad</h1>
+          <hr />
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="cv">
+        <!-- Personal Info -->
+        <div class="cv-section">
+          <input type="checkbox" id="personal-info" />
+          <label for="personal-info"><h2>Personal Information</h2></label>
+          <div class="cv-details">
+            <p>
+              Arika Shehzad<br />
+              Lahore, Pakistan | arikashehzad2@gmail.com | +92 310 4995856<br />
+              <a href="https://github.com/arikashehzad2" target="_blank"
+                >GitHub</a
+              >
+              |
+              <a
+                href="https://www.linkedin.com/in/arika-shehzad-2a8198371/"
+                target="_blank"
+                >LinkedIn</a
+              >
+            </p>
+          </div>
+        </div>
+
+        <!-- Objective -->
+        <div class="cv-section">
+          <input type="checkbox" id="objective" />
+          <label for="objective"><h2>Objective</h2></label>
+          <div class="cv-details">
+            <p>
+              Motivated and detail-oriented Computer Science undergraduate at
+              COMSATS Lahore (6th semester), seeking an internship opportunity
+              to apply programming, database, and networking skills.
+            </p>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="cv-section">
+          <input type="checkbox" id="education" />
+          <label for="education"><h2>Education</h2></label>
+          <div class="cv-details">
+            <p>
+              COMSATS University Islamabad, Lahore Campus, BS in Computer
+              Science (Feb 2023 – Jan 2027)<br />
+              CGPA: 2.85/4.0<br />
+              Coursework: Programming Fundamentals, OOP, Data Structures,
+              Software Engineering, Databases, Networks, AI, OS<br />
+              Punjab Group of Colleges – FSc Pre-Engineering | 1074 / 1100<br />
+              National Model School – Matriculation (Science) | 1055 / 1100
+            </p>
+          </div>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="cv-section">
+          <input type="checkbox" id="skills" />
+          <label for="skills"><h2>Technical Skills</h2></label>
+          <div class="cv-details">
+            <p>
+              Languages: C#, Java, Python, SQL<br />
+              Tools & IDEs: Visual Studio, SSMS, IntelliJ IDEA, Packet Tracer,
+              Wireshark<br />
+              Core Areas: OOP, UI Design, Networking Basics, Database Design,
+              Software Development
+            </p>
+          </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="cv-section">
+          <input type="checkbox" id="projects" />
+          <label for="projects"><h2>Projects</h2></label>
+          <div class="cv-details">
+            <p>
+              <strong>Vehicle Rental App (Java | IntelliJ IDEA)</strong><br />
+              • Desktop-based rental application managing vehicles<br />
+              • Applied OOP principles: inheritance, encapsulation, modular
+              design<br />
+              • Developed user forms and vehicle categories<br /><br />
+              <strong
+                >Local Care Hub – Clinic Management System (C# | SQL
+                Server)</strong
+              ><br />
+              • Full-stack clinic management system with login access for Doctor
+              & Receptionist<br />
+              • Modules for appointments, billing, records, prescriptions, token
+              generation<br />
+              • Implemented SQL procedures, triggers, views
+            </p>
+          </div>
+        </div>
+
+        <!-- Certifications & Achievements -->
+        <div class="cv-section">
+          <input type="checkbox" id="certifications" />
+          <label for="certifications"
+            ><h2>Certifications & Achievements</h2></label
+          >
+          <div class="cv-details">
+            <p>
+              Cisco Networking Academy – Introduction to Networks (Jan 2025)<br />
+              Led frontend/backend of two major projects, collaborated in OOP
+              design, participated in lab-based assignments<br />
+              Languages: English – Fluent, Urdu – Native
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-icons">
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-linkedin"></i>
+        <i class="fab fa-pinterest"></i>
+        <i class="fab fa-google"></i>
+      </div>
+      <p class="copyright">
+        © 2025 Sweet Scoops Ice Cream | All Rights Reserved | Designed with ❤️
+        by Arika
+      </p>
+    </footer>
+  </body>
+</html>
