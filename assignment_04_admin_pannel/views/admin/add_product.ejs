@@ -1,0 +1,32 @@
+<%- include('../partials/admin_header') %>
+
+<div class="admin-page">
+  <div class="container">
+    <h1>Add New Product</h1>
+
+    <form action="/admin/products/add" method="POST">
+      <label for="name">Product Name</label>
+      <input type="text" name="name" id="name" required>
+
+      <label for="price">Price</label>
+      <input type="number" name="price" id="price" required>
+
+      <label for="category">Category</label>
+      <select name="category" id="category" required>
+        <option value="Scoopy Bites">Scoopy Bites</option>
+        <option value="Scoopy Cones">Scoopy Cones</option>
+        <option value="Scoopy Sundaes">Scoopy Sundaes</option>
+      </select>
+
+      <label for="image">Image URL</label>
+      <input type="text" name="image" id="image" required>
+
+      <label for="description">Description</label>
+      <textarea name="description" id="description" rows="4" required></textarea>
+
+      <button type="submit" class="btn">Add Product</button>
+    </form>
+  </div>
+</div>
+
+<%- include('../partials/admin_footer') %>
