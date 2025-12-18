@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scoopy Doo</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+</head>
+<body>
+
+<%- include("partials/header") %>
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <p>Welcome to our Ice Cream Parlour, where every scoop is crafted with love and the finest ingredients. From classic flavors to exciting new creations, we bring you creamy goodness in every bite.</p>
+      <a href="/menu" class="cta-button">Explore Flavors</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features">
+    <img src="/images/icecream-1.png" alt="icecream-big" class="feature-top"/>
+    <div class="feature-row">
+      <img src="/images/icecream-2.jpg" alt="icecream-cup2"/>
+      <img src="/images/icecream-3.jpg" alt="icecream-cone"/>
+      <img src="/images/icecream-4.jpg" alt="cone-sprinkles"/>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Scoopy Doo</h2>
+    <p>
+      At Scoopy Doo, we believe every scoop tells a story. Since opening our doors, we’ve been serving happiness in the form of creamy, handcrafted ice cream made with the freshest ingredients. From timeless classics like chocolate and vanilla to adventurous flavors you won’t find anywhere else, our menu is crafted to surprise your taste buds.
+    </p>
+    <p>
+      We’re more than just an ice cream parlour – we’re a place for friends to meet, families to celebrate, and kids to smile a little brighter. Every cone, cup, and sundae is made with love, because at Scoopy Doo, we know that ice cream isn’t just dessert-it’s joy in its sweetest form.
+    </p>
+  </section>
+
+  <section id="shop">
+    <img src="/images/shop.png" alt="shop" class="shop" />
+    <p class="contact-button">
+      <a href="#" class="cta-button" onclick="toggleContact()">Find Us / Contact</a>
+    </p>
+    <div id="contact-details" style="display: none; margin-top: 20px; font-size: 18px; color: #130013;">
+      <p>📞 Phone: +92 300 1234567</p>
+      <p>🏠 Address: Wapda Town Phase 2, Pakistan</p>
+    </div>
+  </section>
+
+  <section id="offers">
+    <h3>WHAT'S NEW THIS SEASON</h3>
+    <img src="/images/ic-doodle1.png" alt="seasonal offers doodle" class="doodle1" />
+  </section>
+</main>
+
+<%- include("partials/footer") %>
+<script src="/js/index.js"></script>
+</body>
+</html>

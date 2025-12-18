@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scoopy Doo | Menu</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+</head>
+<body>
+
+<%- include("partials/header") %>
+
+<main class="menu-section">
+  <h2 class="menu-title">Our Menu</h2>
+
+  <!-- Category Buttons -->
+  <div class="menu-buttons">
+    <button onclick="showMenu('bites')">Scoopy Bites</button>
+    <button onclick="showMenu('cones')">Scoopy Cones</button>
+    <button onclick="showMenu('sundaes')">Scoopy Sundaes</button>
+  </div>
+
+  <!-- Menu Items -->
+  <div class="menu-content">
+
+    <div id="bites" class="menu-items">
+      <!-- Example Bite Items -->
+      <div class="menu-card">
+       <img src="/images/scoopyvanillas1.jpg" alt="Vanilla Bites" class="menu-card-img">
+        <p>Scoopy Vanillas</p>
+      </div>
+      <div class="menu-card">
+       <img src="/images/scoopychocolates2.jfif" alt="Chocolate Bites" class="menu-card-img">
+        <p>Scoopy Chocolate</p>
+      </div>
+       <div class="menu-card">
+       <img src="/images/caramelscoop3.jfif" alt="Caramel Bites" class="menu-card-img">
+        <p>Scoopy Caramel</p>
+      </div>
+    </div>
+
+    <div id="cones" class="menu-items">
+      <!-- Example Cone Items -->
+      <div class="menu-card">
+       <img src="/images/vanilacone4.jfif" alt="Vanilla Cone" class="menu-card-img">
+        <p>Vanilla Cone</p>
+      </div>
+      <div class="menu-card">
+        <img src="/images/chocolatecone5.jfif" alt="Chocolate Cone" class="menu-card-img">
+        <p>Chocolate Cone</p>
+      </div>
+      <div class="menu-card">
+        <img src="/images/mixcone6.jfif" alt="Mixed Cone" class="menu-card-img">
+        <p>mix Cone</p>
+      </div>
+    </div>
+
+    <div id="sundaes" class="menu-items">
+      <!-- Example Sundae Items -->
+      <div class="menu-card">
+               <img src="/images/vanilasundae7.jfif" alt="Vanilla Sundae" class="menu-card-img">
+        <p>Vanilla Sundae With Oreo Toppings</p>
+      </div>
+      <div class="menu-card">
+       <img src="/images/chocosundae8.jfif" alt="Choco Sundae" class="menu-card-img">
+        <p>Chocolate Sundae With Chocochip Toppings</p>
+      </div>
+       <div class="menu-card">
+        <img src="/images/lotussundae.jfif" alt="Lotus Sundae" class="menu-card-img">
+        <p>Lotus Sundae</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<%- include("partials/footer") %>
+
+<script src="/js/menu.js"></script>
+
+
+</body>
+</html>
