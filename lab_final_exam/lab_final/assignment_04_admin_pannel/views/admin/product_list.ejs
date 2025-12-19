@@ -1,0 +1,45 @@
+<%- include('../partials/admin_header') %>
+
+
+<div class="admin-page">
+  <div class="container">
+    <h1>Product List</h1>
+
+    <a href="/admin/products/add" class="btn">Add New Product</a>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th>Image</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% products.forEach(product => { %>
+        <tr>
+          <td><%= product.name %></td>
+          <td>₹<%= product.price %></td>
+          <td><%= product.category %></td>
+          <td>
+            <img src="<%= product.image %>" alt="<%= product.name %>" width="80">
+          </td>
+          <td><%= product.description %></td>
+          <td>
+            <a href="/admin/products/edit/<%= product._id %>" class="btn">Edit</a>
+
+            <form action="/admin/products/delete/<%= product._id %>" method="POST" style="display:inline;">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('../partials/admin_footer') %>

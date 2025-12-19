@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Confirmation | Scoopy Doo</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<%- include("partials/header") %>
+
+<div class="order-confirmation-section">
+  <h1>Order Confirmation</h1>
+  <p>Thank you, <%= order.customerName %>!</p>
+  <p>Your Order ID: <%= order._id %></p>
+  <p>Total Amount: ₹<%= order.totalAmount %></p>
+  <p>Status: <%= order.status %></p>
+  <a href="/menu" class="cta-button">Back to Menu</a>
+</div>
+
+<%- include("partials/footer") %>
+</body>
+</html>

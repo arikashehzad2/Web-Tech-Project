@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scoopy Doo | Menu</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+</head>
+<body>
+
+<%- include("partials/header") %>
+
+<main class="menu-section">
+  <h2 class="menu-title">Our Menu</h2>
+
+  <!-- Category Buttons -->
+  <div class="menu-buttons">
+    <button onclick="showMenu('bites')">Scoopy Bites</button>
+    <button onclick="showMenu('cones')">Scoopy Cones</button>
+    <button onclick="showMenu('sundaes')">Scoopy Sundaes</button>
+  </div>
+
+  <!-- Menu Items -->
+  <div class="menu-content">
+
+    <div id="bites" class="menu-items">
+      <h3 class="category-title">Scoopy Bites</h3>
+      <% products.filter(p => p.category === "Scoopy Bites").forEach(product => { %>
+        <div class="menu-card">
+          <img src="<%= product.image %>" alt="<%= product.name %>" class="menu-card-img">
+          <p><%= product.name %></p>
+          <p>Rs <%= product.price %></p>
+          <form action="/cart/add/<%= product._id %>" method="POST">
+            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+          </form>
+        </div>
+      <% }) %>
+    </div>
+
+    <div id="cones" class="menu-items">
+      <h3 class="category-title">Scoopy Cones</h3>
+      <% products.filter(p => p.category === "Scoopy Cones").forEach(product => { %>
+        <div class="menu-card">
+          <img src="<%= product.image %>" alt="<%= product.name %>" class="menu-card-img">
+          <p><%= product.name %></p>
+          <p>Rs <%= product.price %></p>
+          <form action="/cart/add/<%= product._id %>" method="POST">
+            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+          </form>
+        </div>
+      <% }) %>
+    </div>
+
+    <div id="sundaes" class="menu-items">
+      <h3 class="category-title">Scoopy Sundaes</h3>
+      <% products.filter(p => p.category === "Scoopy Sundaes").forEach(product => { %>
+        <div class="menu-card">
+          <img src="<%= product.image %>" alt="<%= product.name %>" class="menu-card-img">
+          <p><%= product.name %></p>
+          <p>Rs <%= product.price %></p>
+          <form action="/cart/add/<%= product._id %>" method="POST">
+            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+          </form>
+        </div>
+      <% }) %>
+    </div>
+
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <% if (page > 1) { %>
+      <a href="/menu?page=<%= page - 1 %>" class="prev">Prev</a>
+    <% } %>
+
+    <% for(let i = 1; i <= totalPages; i++) { %>
+      <a href="/menu?page=<%= i %>" class="<%= i === page ? 'active' : '' %>"><%= i %></a>
+    <% } %>
+
+    <% if (page < totalPages) { %>
+      <a href="/menu?page=<%= page + 1 %>" class="next">Next</a>
+    <% } %>
+  </div>
+
+</main>
+
+<%- include("partials/footer") %>
+
+<script src="/js/menu.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout | Scoopy Doo</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<%- include("partials/header") %>
+
+<div class="checkout-section">
+  <h1>Checkout</h1>
+
+  <% if(cart.length === 0) { %>
+    <p>Your cart is empty. <a href="/menu">Go back to Menu</a></p>
+  <% } else { %>
+    <form action="/checkout" method="POST">
+      <label>Name:</label>
+      <input type="text" name="customerName" placeholder="Your Name" required>
+      <br>
+      <label>Email:</label>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <br><br>
+
+      <h2>Cart Items</h2>
+      <ul>
+        <% cart.forEach(item => { %>
+          <li><%= item.name %> x <%= item.quantity %> - ₹<%= item.price %></li>
+        <% }) %>
+      </ul>
+
+      <h3>Total: ₹<%= total %></h3>
+      <button type="submit">Place Order</button>
+    </form>
+  <% } %>
+</div>
+
+<%- include("partials/footer") %>
+</body>
+</html>

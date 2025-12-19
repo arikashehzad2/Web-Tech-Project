@@ -1,0 +1,33 @@
+<%- include('../partials/admin_header') %>
+
+
+<div class="admin-page">
+  <div class="container">
+    <h1>Edit Product</h1>
+
+    <form action="/admin/products/edit/<%= product._id %>" method="POST">
+      <label for="name">Product Name</label>
+      <input type="text" name="name" id="name" value="<%= product.name %>" required>
+
+      <label for="price">Price</label>
+      <input type="number" name="price" id="price" value="<%= product.price %>" required>
+
+      <label for="category">Category</label>
+      <select name="category" id="category" required>
+        <option value="Scoopy Bites" <%= product.category === "Scoopy Bites" ? "selected" : "" %>>Scoopy Bites</option>
+        <option value="Scoopy Cones" <%= product.category === "Scoopy Cones" ? "selected" : "" %>>Scoopy Cones</option>
+        <option value="Scoopy Sundaes" <%= product.category === "Scoopy Sundaes" ? "selected" : "" %>>Scoopy Sundaes</option>
+      </select>
+
+      <label for="image">Image URL</label>
+      <input type="text" name="image" id="image" value="<%= product.image %>" required>
+
+      <label for="description">Description</label>
+      <textarea name="description" id="description" rows="4" required><%= product.description %></textarea>
+
+      <button type="submit" class="btn">Update Product</button>
+    </form>
+  </div>
+</div>
+
+<%- include('../partials/admin_footer') %>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart | Scoopy Doo</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<%- include("partials/header") %>
+
+<div class="cart-section">
+  <h1>Your Cart</h1>
+
+  <% if(cart.length === 0){ %>
+    <p>Your cart is empty.</p>
+    <a href="/menu">Back to Menu</a>
+  <% } else { %>
+    <ul>
+      <% cart.forEach(item => { %>
+        <li>
+          <%= item.name %> x <%= item.quantity %> - ₹<%= item.price %>
+          <form action="/cart/remove/<%= item._id %>" method="POST" style="display:inline;">
+            <button type="submit">Remove</button>
+          </form>
+        </li>
+      <% }) %>
+    </ul>
+    <h3>Total: ₹<%= total %></h3>
+    <a href="/checkout">Proceed to Checkout</a>
+  <% } %>
+</div>
+
+<%- include("partials/footer") %>
+</body>
+</html>

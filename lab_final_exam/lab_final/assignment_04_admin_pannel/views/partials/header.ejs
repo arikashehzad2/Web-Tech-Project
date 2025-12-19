@@ -1,0 +1,58 @@
+<body>
+
+<header>
+  <!-- Hamburger Menu -->
+  <input type="checkbox" id="menu-toggle" />
+  <label for="menu-toggle" class="menu-button">
+    <div></div>
+    <div></div>
+    <div></div>
+  </label>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/menu">Menu</a></li>
+      <li><a href="/about">About Us</a></li>
+      <li><a href="/cart">Cart 
+        <% if(session.cart && session.cart.length > 0) { %>
+          (<%= session.cart.length %>)
+        <% } %>
+      </a></li>
+
+      <!-- Admin Panel with Collapsible Submenu -->
+      <li class="has-submenu">
+        <a href="#" class="submenu-toggle">Admin Panel ▾</a>
+        <ul class="submenu">
+          <li><a href="/admin/orders">Orders Dashboard</a></li>
+          <li><a href="/admin/products">Product List</a></li>
+          <li><a href="/admin/products/add">Add Product</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Logo -->
+  <img src="/images/logo.png" alt="icecream-logo" class="logo" />
+
+  <!-- Main Heading -->
+  <div class="hero">
+    <h1>SCOOPY DOO</h1>
+    <hr />
+  </div>
+</header>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const submenuToggles = document.querySelectorAll('.submenu-toggle');
+
+  submenuToggles.forEach(toggle => {
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault(); // prevents page jump
+      const parentLi = this.parentElement;
+      parentLi.classList.toggle('open'); // toggles submenu visibility
+    });
+  });
+});
+</script>
