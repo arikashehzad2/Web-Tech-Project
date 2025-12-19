@@ -1,0 +1,32 @@
+<h1>Admin Orders Dashboard</h1>
+
+<table border="1" cellpadding="5">
+  <tr>
+    <th>Order ID</th>
+    <th>Customer Name</th>
+    <th>Total Amount</th>
+    <th>Status</th>
+    <th>Order Date</th>
+    <th>Actions</th>
+  </tr>
+
+  <% orders.forEach(order => { %>
+    <tr>
+      <td><%= order._id %></td>
+      <td><%= order.customerName %></td>
+      <td>₹<%= order.totalAmount %></td>
+      <td><%= order.status %></td>
+      <td><%= order.createdAt.toDateString() %></td>
+      <td>
+        <form action="/admin/orders/update/<%= order._id %>" method="POST" style="display:inline;">
+          <input type="hidden" name="status" value="Confirmed">
+          <button type="submit">Confirm</button>
+        </form>
+        <form action="/admin/orders/update/<%= order._id %>" method="POST" style="display:inline;">
+          <input type="hidden" name="status" value="Cancelled">
+          <button type="submit">Cancel</button>
+        </form>
+      </td>
+    </tr>
+  <% }) %>
+</table>
