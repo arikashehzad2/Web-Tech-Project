@@ -1,0 +1,20 @@
+<h1>Checkout</h1>
+
+<form action="/checkout" method="POST">
+  <label>Name:</label>
+  <input type="text" name="customerName" required>
+  <br>
+  <label>Email:</label>
+  <input type="email" name="email" required>
+  <br><br>
+
+  <h2>Cart Items</h2>
+  <ul>
+    <% cart.forEach(item => { %>
+      <li><%= item.name %> x <%= item.quantity %> - ₹<%= item.price %></li>
+    <% }) %>
+  </ul>
+
+  <h3>Total: ₹<%= total %></h3>
+  <button type="submit">Place Order</button>
+</form>
