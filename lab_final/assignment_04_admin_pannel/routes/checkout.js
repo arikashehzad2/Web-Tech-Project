@@ -3,13 +3,8 @@ const router = express.Router();
 const Order = require("../models/Order");
 const Product = require("../models/Product");
 
-// Middleware to check if cart exists
-function checkCartNotEmpty(req, res, next) {
-  if (!req.session.cart || req.session.cart.length === 0) {
-    return res.redirect("/menu"); // Redirect if cart is empty
-  }
-  next();
-}
+// Import reusable middleware
+const checkCartNotEmpty = require("../middleware/checkCartNotEmpty");
 
 // Show checkout page
 router.get("/", checkCartNotEmpty, (req, res) => {
