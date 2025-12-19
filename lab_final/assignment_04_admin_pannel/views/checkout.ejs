@@ -1,20 +1,24 @@
 <h1>Checkout</h1>
 
-<form action="/checkout" method="POST">
-  <label>Name:</label>
-  <input type="text" name="customerName" required>
-  <br>
-  <label>Email:</label>
-  <input type="email" name="email" required>
-  <br><br>
+<% if(cart.length === 0) { %>
+  <p>Your cart is empty. <a href="/menu">Go back to Menu</a></p>
+<% } else { %>
+  <form action="/checkout" method="POST">
+    <label>Name:</label>
+    <input type="text" name="customerName" placeholder="Your Name" required>
+    <br>
+    <label>Email:</label>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <br><br>
 
-  <h2>Cart Items</h2>
-  <ul>
-    <% cart.forEach(item => { %>
-      <li><%= item.name %> x <%= item.quantity %> - ₹<%= item.price %></li>
-    <% }) %>
-  </ul>
+    <h2>Cart Items</h2>
+    <ul>
+      <% cart.forEach(item => { %>
+        <li><%= item.name %> x <%= item.quantity %> - ₹<%= item.price %></li>
+      <% }) %>
+    </ul>
 
-  <h3>Total: ₹<%= total %></h3>
-  <button type="submit">Place Order</button>
-</form>
+    <h3>Total: ₹<%= total %></h3>
+    <button type="submit">Place Order</button>
+  </form>
+<% } %>
